@@ -1,0 +1,62 @@
+::: Project Setup :::
+
+1- check node version
+    $ node -v
+
+2- check npm version
+    $ npm -v
+
+3- create PACKAGE.JSON file which stores dependencies & scripts
+    $ npm init -y
+
+4- install express
+    $ npm install express
+
+5- create main file eg. SERVER.JS or APP.JS
+
+6- Add this to PACJAGE.JSON
+	"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+}
+
+7- install NODEMON for auto restart during development
+    $ npm install --save-dev nodemon
+ 
+8- start normally
+    $ npm start
+
+9- start in dev mode (with auto-restart)
+    $ npm run dev
+
+--------------------------------------------------
+
+::: MongoDB Connection :::
+
+1- install mongoose
+    $ npm install mongoose
+
+--------------------------------------------------
+
+::: JWT AUTHENTICATION :::
+
+1- install following dependencies
+    $ npm install bcryptjs
+    $ npm install jsonwebtoken
+
+*** bcryptjs hashes passwords & 
+    jsonwebtoken is a standard for securely transmitting information between parties as a JSON object ***
+
+--------------------------------------------------
+
+::: Add Templates :::
+
+1- install EJS
+    $ npm install ejs
+
+--------------------------------------------------
+
+::: Image Upload :::
+
+1- install cloudinary
+    $ npm install cloudinary multer-storage-cloudinary multer

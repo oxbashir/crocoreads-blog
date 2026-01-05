@@ -1,0 +1,87 @@
+body {
+  font-family: "Ubuntu", Arial, sans-serif;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%; /* responsive width */
+  max-width: 400px; /* optional fixed width */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  box-sizing: border-box; /* important for equal width */
+}
+
+input {
+  border: none;
+  background-color: #f9f9f9;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 5px lightslategray;
+}
+
+button {
+  margin-top: 5px;
+  background: #23232c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #44444f;
+}
+
+h2 {
+  color: #44444f;
+}
+
+p {
+  font-size: small;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.guest-link {
+  color: teal;
+  padding: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#message {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  body {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+}

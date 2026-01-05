@@ -1,0 +1,144 @@
+body {
+  font-family: "Ubuntu", Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+}
+
+button {
+  background: #23232c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+hr {
+  margin-bottom: 30px;
+  border: none;
+  height: 0.5px;
+  background-color: lightgray;
+}
+
+p {
+  font-size: small;
+  color: #555;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #23232c;
+  color: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.logo-img {
+  height: 40px; /* or 40px */
+  width: auto; /* 🔥 this fixes the gap */
+  display: block;
+}
+
+.nav-right {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  background: #fff;
+  color: #23232c;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #e5e5e5;
+}
+
+.nav-btn.logout {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.nav-btn.logout:hover {
+  background: #e04343;
+}
+
+.main {
+  max-width: 800px;
+  margin: auto;
+  background: #f9f9f9;
+  padding: 25px;
+}
+
+.post-author {
+  color: darkslategray;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.title-image {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.title-image h1 {
+  flex: 1;
+  font-size: x-large;
+  font-weight: 900;
+  word-break: break-word;
+}
+
+/* Prevent image from shrinking oddly */
+.title-image img {
+  flex-shrink: 0;
+  max-width: 120px;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  body {
+    padding: 0px;
+  }
+
+  .title-image {
+    align-items: flex-start;
+  }
+
+  .title-image img {
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+  .title-image h1 {
+    font-size: 1.2rem; /* smaller title on mobile */
+  }
+
+  .main {
+    width: auto;
+  }
+}

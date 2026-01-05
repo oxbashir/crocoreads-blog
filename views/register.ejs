@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/register.css" />
+  </head>
+  <body>
+    <form id="registerForm">
+      <div class="form-group">
+        <h2>Sign up with email</h2>
+        <input type="text" id="name" name="name" required placeholder="Name" />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Password"
+        />
+        <button type="submit">Register</button>
+        <!-- Navigate to Register page -->
+        <p>Already have an account? <a href="/login">Sign in</a></p>
+        <p><a href="/" class="guest-link">Continue as Guest →</a></p>
+        <p id="message"></p>
+      </div>
+    </form>
+
+    <script>
+      const form = document.getElementById("registerForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        try {
+          const res = await fetch("/users/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password }),
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+            localStorage.setItem("token", data.token); // store JWT
+            document.getElementById("message").innerText =
+              "Registration successful!";
+            window.location.href = "/"; // redirect to home page
+          } else {
+            document.getElementById("message").innerText = data.message;
+          }
+        } catch (err) {
+          document.getElementById("message").innerText =
+            "Something went wrong!";
+        }
+      });
+    </script>
+  </body>
+</html>
