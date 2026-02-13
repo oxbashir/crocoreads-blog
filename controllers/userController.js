@@ -14,11 +14,20 @@ exports.registerUser = async (req, res) => {
     if (exists) return res.status(400).json({ message: "User already exists" });
 
     const user = await User.create({ name, email, password });
+    const token = generateToken(user._id);
+
+    // Set cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
+
     res.status(201).json({
       _id: user.id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -32,11 +41,21 @@ exports.loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (user && (await user.matchPassword(password))) {
+      const token = generateToken(user._id);
+
+      // Set cookie
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // only over HTTPS in prod
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+      });
+
+      // Respond with user info (optional)
       res.json({
         _id: user.id,
         name: user.name,
         email: user.email,
-        token: generateToken(user._id),
       });
     } else {
       res.status(401).json({ message: "Invalid credentials" });

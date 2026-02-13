@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="/" class="logo">
+      <img src="/assets/logo.png" alt="" class="logo-img" />crocoreads
+    </a>
+  </div>
+
+  <div class="searchbar">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search..."
+      class="search-input"
+    />
+    <button id="searchBtn" class="search-btn">Search</button>
+  </div>
+
+  <div class="nav-right">
+    <a href="/createpost" id="createPostBtn" class="nav-btn"> Write </a>
+
+    <div class="profile-wrapper">
+      <button class="profile-btn" id="profileToggle">
+        <img src="/assets/user.png" alt="Profile" class="profile-img" />
+      </button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="/profile" class="dropdown-item">Profile</a>
+        <a href="/settings" class="dropdown-item">Settings</a>
+        <hr class="dropdown-hr" />
+        <a id="logoutBtn" class="dropdown-item" , style="color: red">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>

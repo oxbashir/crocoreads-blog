@@ -1,0 +1,96 @@
+<%- include("partials/head") %>
+<body>
+
+  <h1>Admin Dashboard</h1>
+
+  <!-- ================= USERS SECTION ================= -->
+  <section class="admin-section">
+    <h2>Users</h2>
+
+    <!-- User Search -->
+    <form method="GET" action="/admin" class="search-form">
+      <input 
+        type="text" 
+        name="userSearch" 
+        placeholder="Search by name or email..."
+        value="<%= typeof userSearch !== 'undefined' ? userSearch : '' %>"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Users Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (users.length === 0) { %>
+          <tr>
+            <td colspan="3">No users found</td>
+          </tr>
+        <% } %>
+
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.createdAt ? user.createdAt.toDateString() : "-" %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </section>
+
+
+  <!-- ================= POSTS SECTION ================= -->
+  <section class="admin-section">
+    <h2>Posts</h2>
+
+    <!-- Post Search -->
+    <form method="GET" action="/admin" class="search-form">
+      <input 
+        type="text" 
+        name="postSearch" 
+        placeholder="Search by title..."
+        value="<%= typeof postSearch !== 'undefined' ? postSearch : '' %>"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Posts Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (posts.length === 0) { %>
+          <tr>
+            <td colspan="3">No posts found</td>
+          </tr>
+        <% } %>
+
+        <% posts.forEach(post => { %>
+          <tr>
+            <td>
+              <a href="/post/<%= post._id %>">
+                <%= post.title %>
+              </a>
+            </td>
+            <td><%= post.author ? post.author.name : "Unknown" %></td>
+            <td><%= post.createdAt ? post.createdAt.toDateString() : "-" %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

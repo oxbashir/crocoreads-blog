@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= user.name %> - Profile</title>
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+
+  <header>
+    <h1><%= user.name %>'s Profile</h1>
+  </header>
+
+  <!-- User Information -->
+  <section class="profile-info">
+    <h2>Account Details</h2>
+    <ul>
+      <li><strong>Name:</strong> <%= user.name %></li>
+      <li><strong>Email:</strong> <%= user.email %></li>
+      <li><strong>Joined:</strong> <%= user.createdAt ? user.createdAt.toDateString() : "-" %></li>
+    </ul>
+  </section>
+
+  <!-- User Posts -->
+  <section class="user-posts">
+    <h2>Posts by <%= user.name %></h2>
+
+    <% if (posts.length === 0) { %>
+      <p>No posts found.</p>
+    <% } else { %>
+      <ul>
+        <% posts.forEach(post => { %>
+          <li>
+            <a href="/post/<%= post._id %>"><%= post.title %></a>
+            <span class="post-date">(<%= post.createdAt.toDateString() %>)</span>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </section>
+
+</body>
+</html>

@@ -17,7 +17,7 @@ exports.createPost = async (req, res) => {
     const post = new Post({
       title,
       content,
-      author: req.user.id, // must be logged-in user
+      author: req.user.id,
       image: imageUrl,
     });
 
